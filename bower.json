@@ -1,0 +1,13 @@
+{
+  "name": "hm-app-core",
+  "main": "hm-app-core.js",
+  "authors": [
+    "zliu <978949438@qq.com>"
+  ],
+  "description": "hm-app-core",
+  "keywords": [
+    "hm-app-core"
+  ],
+  "license": "MIT",
+  "homepage": ""
+}
