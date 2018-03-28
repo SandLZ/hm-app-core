@@ -93,7 +93,7 @@
                 if (config.url.indexOf('authenticate') > -1) {
                   // 登录接口401 不处理 返回原请求
                   console.log('登录接口401 不处理 返回原请求');
-                  return deferred.promise;
+                  return $q.reject(rejection);
                 }
                 if (bufferLength === 1)
                   $rootScope.$broadcast('event:auth-loginRequired', rejection);
