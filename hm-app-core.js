@@ -1,7 +1,7 @@
 /**
  * @ClassName hm-app-core
  * @Author zliu
- * @Version 0.0.3
+ * @Version 0.0.5
  * @Date 2018/2/6
  * @Email zliu@handsmap.cn
  */
@@ -120,13 +120,7 @@
 angular.module('hmAppCore', ['ionic', 'http-auth-interceptor']).run(function ($ionicPlatform) {
   $ionicPlatform.ready(function () {
     if (window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
     }
     if (window.StatusBar) {
@@ -229,21 +223,17 @@ angular.module('hmAppCore').factory("HttpAuth", ['$rootScope', 'Storage', 'authS
     });
     $rootScope.$on('event:auth-forbidden', function (event, data) {
       // 403
-      // 检查存储的token是否为空 空的话请求token 否则不处理
-      // var token = getJwtToken();
-      // if (null == token || token == undefined) {
-      //   refreshToken().then(
-      //     function (token) {
-      //       setJwtToken(token);
-      //       authService.loginConfirmed('success', function (config) {
-      //         config.headers["Authorization"] = AUTH_PREFIX + token;
-      //         return config;
-      //       })
-      //     }, function (error) {
-      //       console.log(error);
-      //     }
-      //   );
-      // }
+        refreshToken().then(
+            function (token) {
+                setJwtToken(token);
+                authService.loginConfirmed('success', function (config) {
+                    config.headers["Authorization"] = AUTH_PREFIX + token;
+                    return config;
+                })
+            }, function (error) {
+                console.log(error);
+            }
+        );
     });
   }
 

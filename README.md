@@ -1,5 +1,10 @@
-#
-使用
+# 使用
+
+## 安装
+
+```
+bower install hm-app-core@0.0.5 --save
+```
 
 ## 服务
 
